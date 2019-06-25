@@ -1,18 +1,22 @@
 import React, { Component } from "react";
 import logo from "./d20-folio-logo-1.png";
 import "./App.css";
+import {Jumbotron} from 'reactstrap';
+import {BrowserRouter, Route} from 'react-router-dom';
+import NavigationBar from './Components/Navbar/'
+import ViewAllCharacters from './pages/ViewAllCharacters'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <BrowserRouter>
+          <NavigationBar></NavigationBar>
+          <Route exact path = "/" component={ViewAllCharacters} />
+          <Route exact path = "/mychars" component={() =><div>mychars</div>} />
+          <Route exact path = "/new" component={() =><div>new</div>} />
+          <Route exact path = "/edit/:id" component={() =><div>edit</div>} />
+        </BrowserRouter>
       </div>
     );
   }

@@ -2,17 +2,25 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+var mongoose = require("mongoose");
+const db = require("./models");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+mongoose.connect("mongodb://localhost/d20folio", { useNewUrlParser: true });
+mongoose.set('useCreateIndex', true);
+
+
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
 // Define API routes here
-
+app.use(require('./routes'));
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {
