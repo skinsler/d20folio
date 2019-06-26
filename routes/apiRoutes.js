@@ -4,7 +4,7 @@ const seeds = require('../charSeeds.json');
 
 router.route('/characters')
     .get((req,res,err) => {
-        res.json("heelo");
+        res.json(seeds);
     })
 router.route('/character')
     .post((req,res,err) => {
