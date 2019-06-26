@@ -7,7 +7,7 @@ export default {
         .then(response => response.data),
     createCharacter: character => axios.post('/api/character', character)
         .then(response => response.data),
-    createCharacter: (id, character) => axios.put('/api/character' + id, character)
+    updateCharacter: (id, character) => axios.put('/api/character' + id, character)
         .then(response => response.data),
     deleteCharacter: id => axios.delete('/api/character/' + id)
         .then(response => response.data),
